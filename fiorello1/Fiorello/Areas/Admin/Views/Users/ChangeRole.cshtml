@@ -1,0 +1,53 @@
+﻿@model UserVM
+@using Fiorello.Helpers;
+@{
+    ViewData["Title"] = "ChangeRole";
+    
+
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form method="post">
+    <fieldset class="form-group row">
+        <legend class="col-form-label col-sm-2 float-sm-left pt-0">Roles</legend>
+        <div class="col-sm-10">
+            @foreach (Roles item in Enum.GetValues(typeof(Roles)))
+            {
+                @*<div class="form-check">
+                    <input class="form-check-input" type="radio" name="newRole" value="@item.ToString()">
+                    <label class="form-check-label">
+                        @item.ToString()
+                    </label>
+                </div>
+                <span asp-validation-for="Role"></span>*@
+                @if ((string)TempData["oldRole"] == item.ToString())
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="newRole" value=@item.ToString() checked>
+                    <label class="form-check-label">
+                        @item.ToString()
+                    </label>
+                </div>
+                <span asp-validation-for="Role"></span>
+            }
+            else
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="newRole" value="@item.ToString()">
+                    <label class="form-check-label">
+                        @item.ToString()
+                    </label>
+                </div>
+                <span asp-validation-for="Role"></span>
+            }
+               
+            }
+        </div>
+    </fieldset>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <a asp-action="Index" class="my-3 btn btn-secondary">Go Back</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+

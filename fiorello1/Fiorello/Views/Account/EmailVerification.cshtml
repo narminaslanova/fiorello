@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+    string link = (string)TempData["token"];
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ConfirmEmail</title>
+</head>
+<body>
+    <h1>Email has been sent. Please, verify it.</h1>
+    <span>Click <a href="@link">here</a> for verifying.</span>
+</body>
+</html>
+
+
+
